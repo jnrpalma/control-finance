@@ -6,6 +6,10 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedMaterialModule } from './shared/shared-material/shared-material.module';
+import { PoModule } from '@po-ui/ng-components';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,7 +20,11 @@ import { SharedMaterialModule } from './shared/shared-material/shared-material.m
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    SharedMaterialModule
+    ReactiveFormsModule,
+    SharedMaterialModule,
+    PoModule,
+    HttpClientModule,
+    RouterModule.forRoot([])
   ],
   providers: [],
   bootstrap: [AppComponent]

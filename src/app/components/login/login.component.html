@@ -8,38 +8,42 @@
             gastando mais e saia do vermelho.
           </p>
         </div>
+        
         <div class="col-xs-12 col-lg-6">
           <div class="fixed-wrapper">
-            <mat-card class="custom-style-card">
-              <mat-tab-group>
-                <mat-tab label="ENTRAR">
+            <po-container>
+              <po-tabs>
+                <po-tab [p-active]='true' p-label="ENTRAR">
                   <form>
-                    <div class="input-group mb-3">
-                      <input
+                    <div >
+                      <!-- <input
                         type="email"
                         class="form-control"
                         placeholder="E-mail"
                         aria-label="email"
                         aria-describedby="email"
-                      />
+                      /> -->
+                      <po-input name="input"  p-placeholder="Email"> </po-input>
                     </div>
-  
-                    <div class="input-group mb-3">
-                      <input
+                    <div >
+                      <!-- <input
                         type="password"
                         class="form-control"
                         placeholder="Senha"
                         aria-label="password"
                         aria-describedby="password"
-                      />
+                      /> -->
+                      <po-input name="input"  p-placeholder="Senha"> </po-input>
                     </div>
-  
+                    <po-divider></po-divider>
                     <div class="d-grid gap-2">
-                      <button
+                      <!-- <button
                         class="btn btn-primary btn-login"
                         type="submit">
                         ENTRAR
-                      </button>
+                      </button> -->
+                      <po-button class="d-grid gap-2" p-label="LOGAR" > </po-button>
+
                     </div>
   
                     <p class="text-custom">
@@ -47,50 +51,56 @@
                       realizar um cadastro.
                     </p>
                   </form>
-                </mat-tab>
-                <mat-tab label="CADASTRAR">
-                  <form>
-                    <div class="input-group mb-3">
-                      <input
+                </po-tab>
+               
+                <po-tab [p-active]='true' p-label="CADASTRAR">
+                  <form [formGroup]="formRegister">
+                    <div >
+                      <!-- <input
                         type="text"
                         class="form-control"
                         placeholder="Nome"
                         aria-label="Username"
                         aria-describedby="basic-addon1"
-                      />
+                      /> -->
+                      <po-input formControlName="name" name="input"  p-placeholder="Nome"> </po-input>
                     </div>
   
-                    <div class="input-group mb-3">
-                      <input
+                    <div >
+                      <!-- <input
                         type="email"
                         class="form-control"
                         placeholder="Email"
                         aria-label="Username"
                         aria-describedby="basic-addon1"
-                      />
+                      /> -->
+                      <po-input formControlName="email" name="input"  p-placeholder="Email"> </po-input>
                     </div>
   
-                    <div class="input-group mb-3">
-                      <input
+                    <div>
+                      <!-- <input
                         type="number"
                         class="form-control"
                         placeholder="Idade"
                         aria-label="Age"
                         aria-describedby="basic-addon1"
-                      />
+                      /> -->
+                      <po-input formControlName="age" name="input"  p-placeholder="Idade"> </po-input>
+                      <po-divider></po-divider>
                     </div>
   
-                    <div class="d-grid gap-2">
-                      <button
+                    <div >
+                      <!-- <button
                         class="btn btn-primary btn-register"
                         type="submit">
                         CONTINUAR CADASTRO
-                      </button>
+                      </button> -->
+                      <po-button class="d-grid gap-2" [p-disabled]="formRegister.invalid" p-label="CONTINUAR CADASTRO" > </po-button>
                     </div>
                   </form>
-                </mat-tab>
-              </mat-tab-group>
-            </mat-card>
+                </po-tab>
+              </po-tabs>
+          </po-container>
           </div>
         </div>
       </div>
