@@ -33,7 +33,7 @@
                         aria-label="password"
                         aria-describedby="password"
                       /> -->
-                      <po-input name="input"  p-placeholder="Senha"> </po-input>
+                      <po-password name="password" > </po-password>
                     </div>
                     <po-divider></po-divider>
                     <div class="d-grid gap-2">
@@ -54,7 +54,9 @@
                 </po-tab>
                
                 <po-tab [p-active]='true' p-label="CADASTRAR">
-                  <form [formGroup]="formRegister">
+                  <form
+                  [formGroup]="formRegister"
+                  >
                     <div >
                       <!-- <input
                         type="text"
@@ -95,7 +97,10 @@
                         type="submit">
                         CONTINUAR CADASTRO
                       </button> -->
-                      <po-button class="d-grid gap-2" [p-disabled]="formRegister.invalid" p-label="CONTINUAR CADASTRO" > </po-button>
+                      <po-modal #modal p-title="Continue seu cadastro!">
+                        <app-continuation-register></app-continuation-register>  
+                      </po-modal>
+                      <po-button class="d-grid gap-2" type="submit" (p-click)="openDialogRegister()"  p-label="CONTINUAR CADASTRO" > </po-button>
                     </div>
                   </form>
                 </po-tab>
@@ -106,3 +111,5 @@
       </div>
     </div>
   </div>
+
+  <!-- [p-disabled]="formRegister.invalid" -->

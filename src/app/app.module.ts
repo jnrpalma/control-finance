@@ -10,11 +10,14 @@ import { PoModule } from '@po-ui/ng-components';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ContinuationRegisterComponent } from './components/continuation-register/continuation-register.component';
+import { PoModalModule } from '@po-ui/ng-components';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    ContinuationRegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -24,6 +27,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     SharedMaterialModule,
     PoModule,
     HttpClientModule,
+    PoModalModule,
     RouterModule.forRoot([])
   ],
   providers: [],
