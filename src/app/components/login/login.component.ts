@@ -20,8 +20,10 @@ constructor(private fb: FormBuilder, private dialog: MatDialog){
 
 formRegister!: FormGroup;
 
+
 ngOnInit(){
 this.initForms();
+console.log(this.getValueControl(this.formRegister, 'name'))
 }
 
 debug(){
@@ -36,9 +38,27 @@ initForms(){
   })
 }
 
-
 openDialogRegister(){
+  this.createDataDialog();
   this.modal.open()
+}
+
+createDataDialog(
+  name = this.getValueControl(this.formRegister, 'name'),
+  email = this.getValueControl(this.formRegister, 'email'),
+  age = this.getValueControl(this.formRegister, 'age')){
+  
+    const dataDialog = {
+      name,
+      email,
+      age
+    }
+
+    return dataDialog;
+}
+
+getValueControl(form: FormGroup, control: string){
+  return form.controls[control].value;
 }
 
 }

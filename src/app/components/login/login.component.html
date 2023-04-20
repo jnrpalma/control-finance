@@ -1,115 +1,61 @@
 <div class="main">
-    <div class="container display-flex">
-      <div class="row">
-        <div class="col-xs-12 col-lg-6 custom-margin">
-          <h1 class="title">Controle de Dívidas</h1>
-          <p class="subTitle">
-            Agora é possível ter o controle das suas dívidas. Saiba o que esta
-            gastando mais e saia do vermelho.
-          </p>
-        </div>
-        
-        <div class="col-xs-12 col-lg-6">
-          <div class="fixed-wrapper">
-            <po-container>
-              <po-tabs>
-                <po-tab [p-active]='true' p-label="ENTRAR">
-                  <form>
-                    <div >
-                      <!-- <input
-                        type="email"
-                        class="form-control"
-                        placeholder="E-mail"
-                        aria-label="email"
-                        aria-describedby="email"
-                      /> -->
-                      <po-input name="input"  p-placeholder="Email"> </po-input>
-                    </div>
-                    <div >
-                      <!-- <input
-                        type="password"
-                        class="form-control"
-                        placeholder="Senha"
-                        aria-label="password"
-                        aria-describedby="password"
-                      /> -->
-                      <po-password name="password" > </po-password>
-                    </div>
-                    <po-divider></po-divider>
-                    <div class="d-grid gap-2">
-                      <!-- <button
-                        class="btn btn-primary btn-login"
-                        type="submit">
-                        ENTRAR
-                      </button> -->
-                      <po-button class="d-grid gap-2" p-label="LOGAR" > </po-button>
+  <div class="container display-flex">
+    <div class="row">
+      <div class="col-xs-12 col-lg-6 custom-margin">
+        <h1 class="title">Controle de Dívidas</h1>
+        <p class="subTitle">
+          Agora é possível ter o controle das suas dívidas. Saiba o que esta
+          gastando mais e saia do vermelho.
+        </p>
+      </div>
 
-                    </div>
-  
-                    <p class="text-custom">
-                      Se você ainda não tiver os dados de login, será necessário
-                      realizar um cadastro.
-                    </p>
-                  </form>
-                </po-tab>
-               
-                <po-tab [p-active]='true' p-label="CADASTRAR">
-                  <form
-                  [formGroup]="formRegister"
-                  >
-                    <div >
-                      <!-- <input
-                        type="text"
-                        class="form-control"
-                        placeholder="Nome"
-                        aria-label="Username"
-                        aria-describedby="basic-addon1"
-                      /> -->
-                      <po-input formControlName="name" name="input"  p-placeholder="Nome"> </po-input>
-                    </div>
-  
-                    <div >
-                      <!-- <input
-                        type="email"
-                        class="form-control"
-                        placeholder="Email"
-                        aria-label="Username"
-                        aria-describedby="basic-addon1"
-                      /> -->
-                      <po-input formControlName="email" name="input"  p-placeholder="Email"> </po-input>
-                    </div>
-  
-                    <div>
-                      <!-- <input
-                        type="number"
-                        class="form-control"
-                        placeholder="Idade"
-                        aria-label="Age"
-                        aria-describedby="basic-addon1"
-                      /> -->
-                      <po-input formControlName="age" name="input"  p-placeholder="Idade"> </po-input>
-                      <po-divider></po-divider>
-                    </div>
-  
-                    <div >
-                      <!-- <button
-                        class="btn btn-primary btn-register"
-                        type="submit">
-                        CONTINUAR CADASTRO
-                      </button> -->
-                      <po-modal #modal p-title="Continue seu cadastro!">
-                        <app-continuation-register></app-continuation-register>  
-                      </po-modal>
-                      <po-button class="d-grid gap-2" type="submit" (p-click)="openDialogRegister()"  p-label="CONTINUAR CADASTRO" > </po-button>
-                    </div>
-                  </form>
-                </po-tab>
-              </po-tabs>
+      <div class="col-xs-12 col-lg-6">
+        <div class="fixed-wrapper">
+          <po-container>
+            <po-tabs>
+              <po-tab [p-active]='true' p-label="ENTRAR">
+                <form>
+                  <div>
+                    <po-input name="input" p-placeholder="Email"></po-input>
+                  </div>
+                  <div>
+                    <po-password name="password"></po-password>
+                  </div>
+                  <po-divider></po-divider>
+                  <div class="d-grid gap-2">
+                    <po-button class="d-grid gap-2" p-label="LOGAR"></po-button>
+                  </div>
+                  <p class="text-custom">
+                    Se você ainda não tiver os dados de login, será necessário
+                    realizar um cadastro.
+                  </p>
+                </form>
+              </po-tab>
+
+              <po-tab [p-active]='true' p-label="CADASTRAR">
+                <form [formGroup]="formRegister">
+                  <div>
+                    <po-input formControlName="name" name="input" p-placeholder="Nome"></po-input>
+                  </div>
+                  <div>
+                    <po-input formControlName="email" name="input" p-placeholder="Email"></po-input>
+                  </div>
+                  <div>
+                    <po-input formControlName="age" name="input" p-placeholder="Idade"></po-input>
+                    <po-divider></po-divider>
+                  </div>
+                  <div>
+                    <po-modal #modal p-title="Continue seu cadastro!"   >
+                      <app-continuation-register  ></app-continuation-register>
+                    </po-modal>
+                    <po-button class="d-grid gap-2" type="button" (click)="openDialogRegister()" p-label="CONTINUAR CADASTRO"></po-button>
+                  </div>
+                </form>
+              </po-tab>
+            </po-tabs>
           </po-container>
-          </div>
         </div>
       </div>
     </div>
   </div>
-
-  <!-- [p-disabled]="formRegister.invalid" -->
+</div>
