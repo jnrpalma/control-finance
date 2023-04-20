@@ -12,12 +12,13 @@ import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ContinuationRegisterComponent } from './components/continuation-register/continuation-register.component';
 import { PoModalModule } from '@po-ui/ng-components';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    ContinuationRegisterComponent
+    ContinuationRegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,7 +31,7 @@ import { PoModalModule } from '@po-ui/ng-components';
     PoModalModule,
     RouterModule.forRoot([])
   ],
-  providers: [],
+  providers: [{ provide: MAT_DIALOG_DATA, useValue: {} }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
