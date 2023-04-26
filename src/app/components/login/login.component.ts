@@ -41,9 +41,8 @@ export class LoginComponent implements OnInit {
       autoFocus: false,
       maxHeight: '90vh',
       data: {
-        data: ''
+        data: this.createDataDialog()
       }
-
     })
   }
 

@@ -1,14 +1,15 @@
-<form>
+<h1>Continue seu cadastro!</h1>
+<form [formGroup]="form">
   <div>
-    <po-input name="input" p-placeholder="Nome"> </po-input>
+    <po-input name="input" formControlName="name" p-placeholder="Nome"> </po-input>
   </div>
 
   <div>
-    <po-input name="input" p-placeholder="Email"> </po-input>
+    <po-input name="input" formControlName="email" p-placeholder="Email"> </po-input>
   </div>
 
   <div>
-    <po-password name="password"> </po-password>
+    <po-number name="number" formControlName="age" p-placeholder="idade"> </po-number>
   </div>
   <po-divider></po-divider>
 
@@ -24,11 +25,11 @@
   </div>
 
   <div>
-    <po-password name="password" p-placeholder="Senha"> </po-password>
+    <po-password name="password" formControlName="password" p-placeholder="Senha"> </po-password>
   </div>
 
   <div>
-    <po-password name="password" p-placeholder="Confirme sua senha">
+    <po-password name="confirmPassword" formControlName="confirmPassword"  p-placeholder="Confirme sua senha">
     </po-password>
     <br />
     <div>
