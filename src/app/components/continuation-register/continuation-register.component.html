@@ -1,73 +1,35 @@
 <form>
-  <div >
-    <!-- <input
-      type="text"
-      class="form-control"
-      placeholder="Nome"
-      aria-label="name"
-      aria-describedby="name"
-    /> -->
-    <po-input name="input"  p-placeholder="Nome"> </po-input>
+  <div>
+    <po-input name="input" p-placeholder="Nome"> </po-input>
   </div>
 
-  <div >
-    <!-- <input
-      type="email"
-      class="form-control"
-      placeholder="Email"
-      aria-label="email"
-      aria-describedby="email"
-    /> -->
-    <po-input name="input"  p-placeholder="Email"> </po-input>
+  <div>
+    <po-input name="input" p-placeholder="Email"> </po-input>
   </div>
 
-  <div >
-    <!-- <input
-      type="number"
-      class="form-control"
-      placeholder="Senha"
-      aria-label="age"
-      aria-describedby="age"
-    /> -->
-    <po-password name="password" > </po-password>
+  <div>
+    <po-password name="password"> </po-password>
   </div>
   <po-divider></po-divider>
 
-  <div class="image-block">
-    <!-- IMAGEM AQUI -->
-  </div>
+  <div class="image-block"></div>
 
   <label for="basic-url">Adicione uma foto ao perfil</label>
-  <div >
-    <!-- <input
-      type="file"
-      class="form-control"
-      aria-label="imgProfile"
-      aria-describedby="imgProfile"
-    /> -->
-    <po-upload name="upload"  p-url="https://po-sample-api.fly.dev/v1/uploads/addFile"> </po-upload>
+  <div>
+    <po-upload
+      name="upload"
+      p-url="https://po-sample-api.fly.dev/v1/uploads/addFile"
+    >
+    </po-upload>
   </div>
 
-  <div >
-    <!-- <input
-      type="password"
-      class="form-control"
-      placeholder="Senha"
-      aria-label="Password"
-      aria-describedby="password"
-    /> -->
-    <po-password name="password"  p-placeholder="Senha"> </po-password>
+  <div>
+    <po-password name="password" p-placeholder="Senha"> </po-password>
   </div>
 
-  <div >
-    <!-- <input
-      type="password"
-      class="form-control"
-      placeholder="Confirmar senha"
-      aria-label="confirmPassword"
-      aria-describedby="confirmPassword"
-    /> -->
-    <po-password name="password"  p-placeholder="Confirme sua senha"> </po-password>
+  <div>
+    <po-password name="password" p-placeholder="Confirme sua senha">
+    </po-password>
     <br />
     <div>
       <p class="warn">As senhas não são iguais!!</p>
@@ -75,11 +37,6 @@
   </div>
 
   <div class="">
-    <!-- <button
-      class="btn btn-primary btn-continuation-register"
-      type="submit">
-      FINALIZAR CADASTRO
-    </button> -->
-    <po-button class="d-grid gap-2" p-label="FINALIZAR CADASTRO" > </po-button>
+    <po-button class="d-grid gap-2" p-label="FINALIZAR CADASTRO"> </po-button>
   </div>
 </form>
