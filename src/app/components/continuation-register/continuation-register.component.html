@@ -1,5 +1,5 @@
 <h1>Continue seu cadastro!</h1>
-<form [formGroup]="form">
+<form [formGroup]="form" (ngSubmit)="submit()">
   <div>
     <po-input name="input" formControlName="name" p-placeholder="Nome">
     </po-input>
@@ -28,6 +28,7 @@
       class="form-control"
       aria-label="imgProfile"
       aria-describedby="imgProfile"
+      
       (change)="onChange($event)"
     />
   </div>
@@ -55,6 +56,6 @@
   </div>
 
   <div class="">
-    <po-button class="d-grid gap-2" p-label="FINALIZAR CADASTRO"> </po-button>
+    <po-button class="d-grid gap-2"  (p-click)="submit()" p-label="FINALIZAR CADASTRO"> </po-button>
   </div>
 </form>

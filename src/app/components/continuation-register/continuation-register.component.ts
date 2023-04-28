@@ -19,7 +19,6 @@ constructor(
 
 }
   ngOnInit() {
-   console.log('dados do cadastro inicial', this.data)
    this.initForm();
   }
 
@@ -50,6 +49,10 @@ constructor(
         avatar: file
       })
     }
+  }
+
+  submit() {
+    console.log(this.form);
   }
 
 }

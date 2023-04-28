@@ -20,7 +20,6 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.initForms();
-    console.log(this.getValueControl(this.formRegister, 'name'))
   }
 
   getValueControl(form: FormGroup, control: string) {
