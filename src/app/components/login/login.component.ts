@@ -12,7 +12,7 @@ import { PoModalComponent } from '@po-ui/ng-components';
 })
 export class LoginComponent implements OnInit {
   @ViewChild(PoModalComponent, { static: true }) modal!: PoModalComponent; // Obtenção do PoModalComponent usando ViewChild
-
+  // @ViewChild('modalContinuationRegister', { static: true }) modalContinuationRegister!: PoModalComponent;
 
   constructor(private fb: FormBuilder, private dialog: MatDialog) { }
 
@@ -44,6 +44,7 @@ export class LoginComponent implements OnInit {
         data: this.createDataDialog()
       }
     })
+   
   }
 
   createDataDialog(

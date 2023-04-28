@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit,  } from '@angular/core';
+import { Component, Inject, OnInit, ViewChild,  } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 @Component({
@@ -7,8 +7,10 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['./continuation-register.component.scss']
 })
 export class ContinuationRegisterComponent implements OnInit  {
-
 form!: FormGroup;
+preview!: any
+isDefault = true;
+isDefaultImage = '../../../assets/images/default.png'
 
 constructor(
   @Inject(MAT_DIALOG_DATA) public data: any,
@@ -28,9 +30,25 @@ constructor(
       
       avatar: [null, [Validators.required]],
       password: [null, [Validators.required]],
-      confirmaPassword: [null, [Validators.required]],
+      confirmPassword: [null, [Validators.required]],
 
     })
+  }
+
+  onChange(event: any) { 
+    if(event.target.files && event.target.files.length > 0) {
+      this.isDefault = false;
+      const file = event.target.files[0]; 
+      
+      const reader = new FileReader();
+
+      reader.onload = (e) => (this.preview = reader.result);
+      reader.readAsDataURL(file);
+
+      this.form.patchValue({
+        avatar: file
+      })
+    }
   }
 
 }

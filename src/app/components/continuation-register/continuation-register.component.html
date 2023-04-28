@@ -1,3 +1,4 @@
+
 <h1>Continue seu cadastro!</h1>
 <form [formGroup]="form">
   <div>
@@ -13,15 +14,18 @@
   </div>
   <po-divider></po-divider>
 
-  <div class="image-block"></div>
+  <div class="image-block">
+
+  <!-- <po-image [p-src]="isDefault ? isDefaultImage : preview" class="circle" ></po-image> -->
+  <po-avatar [p-src]="isDefault ? isDefaultImage : preview" p-size="lg"> </po-avatar>
+
+
+  </div>
 
   <label for="basic-url">Adicione uma foto ao perfil</label>
-  <div>
-    <po-upload
-      name="upload"
-      p-url="https://po-sample-api.fly.dev/v1/uploads/addFile"
-    >
-    </po-upload>
+  <div class="input-group mb-3">
+   <input type="file" class="form-control" aria-label="imgProfile" aria-describedby="imgProfile"
+   (change)="onChange($event)" />
   </div>
 
   <div>
@@ -41,3 +45,4 @@
     <po-button class="d-grid gap-2" p-label="FINALIZAR CADASTRO"> </po-button>
   </div>
 </form>
+
