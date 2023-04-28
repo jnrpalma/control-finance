@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit, ViewChild,  } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { FormValidations } from 'src/app/shared/validations/form-validation';
 @Component({
   selector: 'app-continuation-register',
   templateUrl: './continuation-register.component.html',
@@ -30,7 +31,7 @@ constructor(
       
       avatar: [null, [Validators.required]],
       password: [null, [Validators.required]],
-      confirmPassword: [null, [Validators.required]],
+      confirmPassword: [null, [Validators.required, FormValidations.equalsTo('password')]],
 
     })
   }
