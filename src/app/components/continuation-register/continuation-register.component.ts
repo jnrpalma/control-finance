@@ -1,10 +1,61 @@
-import { Component } from '@angular/core';
-
+import { Component, Inject, OnInit, ViewChild,  } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { FormValidations } from 'src/app/shared/validations/form-validation';
 @Component({
   selector: 'app-continuation-register',
   templateUrl: './continuation-register.component.html',
   styleUrls: ['./continuation-register.component.scss']
 })
-export class ContinuationRegisterComponent {
+export class ContinuationRegisterComponent implements OnInit  {
+form!: FormGroup;
+preview!: any
+isDefault = true;
+isDefaultImage = '../../../assets/images/default.png'
+max: number = 99;
+min: number = 16;
+messageErrorPattern: string = "teste";
+
+constructor(
+  @Inject(MAT_DIALOG_DATA) public data: any,
+  private fb: FormBuilder) {
+
+}
+  ngOnInit() {
+   this.initForm();
+  }
+
+  initForm() { 
+    this.form = this.fb.group({
+      name: [this.data.data?.name, Validators.required],
+      email: [this.data.data?.email, [Validators.required, Validators.email]],
+      age: [this.data.data?.age, [Validators.required]],
+      
+      avatar: [null, [Validators.required]],
+      password: [null, [Validators.required]],
+      confirmPassword: [null, [Validators.required, FormValidations.equalsTo('password')]],
+
+    })
+  }
+
+  onChange(event: any) { 
+    if(event.target.files && event.target.files.length > 0) {
+      this.isDefault = false;
+      const file = event.target.files[0]; 
+      
+      const reader = new FileReader();
+
+      reader.onload = (e) => (this.preview = reader.result);
+      reader.readAsDataURL(file);
+
+      this.form.patchValue({
+        avatar: file
+      })
+    }
+  }
+
+  submit() {
+    console.log(this.form);
+  }
 
 }
