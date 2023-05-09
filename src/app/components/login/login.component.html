@@ -58,12 +58,12 @@
                   </div>
 
                   <div>
-                    <po-input
-                      formControlName="age"
-                      name="input"
-                      p-placeholder="Idade"
-                    >
-                    </po-input>
+                    <po-number name="number" formControlName="age" 
+                    p-placeholder="idade" [p-min]="16" [p-max]="99"
+                     p-error-pattern="Cadastro apenas para idade de 16 anos ou mais "
+                     p-clean="true"
+                     >
+                    </po-number>
                     <po-divider></po-divider>
                   </div>
 

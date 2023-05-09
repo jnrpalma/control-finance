@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
     this.formRegister = this.fb.group({
       name: [null, Validators.required],
       email: [null, [Validators.required, Validators.email]],
-      age: [null, Validators.required]
+      age: [null, Validators.compose([Validators.required, Validators.min(16), Validators.max(100)])]
     })
   }
 

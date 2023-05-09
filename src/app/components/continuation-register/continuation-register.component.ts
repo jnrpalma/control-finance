@@ -12,6 +12,9 @@ form!: FormGroup;
 preview!: any
 isDefault = true;
 isDefaultImage = '../../../assets/images/default.png'
+max: number = 99;
+min: number = 16;
+messageErrorPattern: string = "teste";
 
 constructor(
   @Inject(MAT_DIALOG_DATA) public data: any,
