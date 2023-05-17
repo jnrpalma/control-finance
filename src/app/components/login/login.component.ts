@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ContinuationRegisterComponent } from '../continuation-register/continuation-register.component';
-import { PoModalComponent } from '@po-ui/ng-components';
 
 @Component({
   selector: 'app-login',
@@ -10,9 +9,7 @@ import { PoModalComponent } from '@po-ui/ng-components';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  @ViewChild('modalRegister', { static: true }) modalRegister!: PoModalComponent ;
-
-
+ 
   constructor(private fb: FormBuilder, private dialog: MatDialog) { }
 
   formRegister!: FormGroup;
