@@ -4,6 +4,7 @@ import { Observable, catchError, retry, throwError } from 'rxjs';
 import { environments } from 'src/environments/environments';
 import { RegisterUser } from '../interfaces/registerUser';
 import { PoNotificationService } from '@po-ui/ng-components';
+import { LoginUser } from '../interfaces/loginUser';
 
 @Injectable({
   providedIn: 'root'
@@ -52,8 +53,8 @@ export class ApiService {
       );
   }
 
-  loginUser(user: any): Observable<any> {
-    return this.httpClient.options<any>(environments.BASE_URL + '/auth/login')
+  loginUser(user: any): Observable<LoginUser> {
+    return this.httpClient.post<LoginUser>(environments.BASE_URL + '/auth/login',  user)
       .pipe(
         retry(2),
         catchError((err) => {

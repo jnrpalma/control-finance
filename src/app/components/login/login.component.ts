@@ -1,19 +1,31 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { LoginUser } from './../../interfaces/loginUser';
+import { Subject, takeUntil } from 'rxjs';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ContinuationRegisterComponent } from '../continuation-register/continuation-register.component';
+import { ApiService } from 'src/app/services/api.service';
+import { LocalstorageService } from 'src/app/services/localstorage.service';
+import { PoNotificationService } from '@po-ui/ng-components';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
  
-  constructor(private fb: FormBuilder, private dialog: MatDialog) { }
+  constructor(
+    private fb: FormBuilder, 
+    private dialog: MatDialog, 
+    private apiService: ApiService,
+    private localStorage: LocalstorageService,
+    public poNotification: PoNotificationService) { }
+
 
   formRegister!: FormGroup;
   formLogin!: FormGroup;
+  destroy$: Subject<boolean> = new Subject<boolean>();
 
   ngOnInit() {
     this.initForms();
@@ -47,8 +59,35 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
-    console.log(this.formLogin);
+    if(this.isValidForm()){
+      const {email} = this.createPayload();
+      this.apiService.loginUser(this.createPayload())
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((res: LoginUser)=> {
+        let {token} = res;
+        this.localStorage.setLocalStorage('token', token)
+        this.localStorage.setLocalStorage('user', email)
+        this.poNotification.success('Login realizado com sucesso!');
+      })
+    }
   }
+
+  isValidForm(): boolean {
+    return this.formLogin.valid;
+  }
+
+
+  createPayload(
+    email = this.getValueControl(this.formLogin, 'email'),
+    password = this.getValueControl(this.formLogin, 'password')
+  ) {
+    const payload = {
+      email,
+      password
+    }
+    return payload;
+  }
+
 
   createDataDialog(
     name = this.getValueControl(this.formRegister, 'name'),
@@ -62,5 +101,11 @@ export class LoginComponent implements OnInit {
     }
     return dataDialog;
   }
+
+  ngOnDestroy(): void {
+    this.destroy$.next(true)
+    this.destroy$.unsubscribe();
+  }
+
 
 }
