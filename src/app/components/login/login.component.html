@@ -14,16 +14,17 @@
           <po-container>
             <po-tabs>
               <po-tab [p-active]="true" p-label="ENTRAR">
-                <form>
+                <form [formGroup]="formLogin"  
+                (ngSubmit)="login()">
                   <div>
-                    <po-input name="input" p-placeholder="Email"> </po-input>
+                    <po-login name="input" p-placeholder="Email" formControlName="email"> </po-login>
                   </div>
                   <div>
-                    <po-password name="password"> </po-password>
+                    <po-password name="password" formControlName="password"> </po-password>
                   </div>
                   <po-divider></po-divider>
                   <div class="d-grid gap-2">
-                    <po-button class="d-grid gap-2" p-label="LOGAR">
+                    <po-button class="d-grid gap-2" p-label="LOGAR"  (p-click)="login()"  [p-disabled]="formLogin.invalid" >
                     </po-button>
                   </div>
 
@@ -58,11 +59,15 @@
                   </div>
 
                   <div>
-                    <po-number name="number" formControlName="age" 
-                    p-placeholder="idade" [p-min]="16" [p-max]="99"
-                     p-error-pattern="Cadastro apenas para idade de 16 anos ou mais "
-                     p-clean="true"
-                     >
+                    <po-number
+                      name="number"
+                      formControlName="age"
+                      p-placeholder="idade"
+                      [p-min]="16"
+                      [p-max]="99"
+                      p-error-pattern="Cadastro apenas para idade de 16 anos ou mais "
+                      p-clean="true"
+                    >
                     </po-number>
                     <po-divider></po-divider>
                   </div>

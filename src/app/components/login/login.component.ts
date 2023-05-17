@@ -2,8 +2,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ContinuationRegisterComponent } from '../continuation-register/continuation-register.component';
-import { PoModalComponent } from '@po-ui/ng-components';
-
 
 @Component({
   selector: 'app-login',
@@ -11,12 +9,11 @@ import { PoModalComponent } from '@po-ui/ng-components';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  @ViewChild(PoModalComponent, { static: true }) modal!: PoModalComponent; // Obtenção do PoModalComponent usando ViewChild
-  // @ViewChild('modalContinuationRegister', { static: true }) modalContinuationRegister!: PoModalComponent;
-
+ 
   constructor(private fb: FormBuilder, private dialog: MatDialog) { }
 
   formRegister!: FormGroup;
+  formLogin!: FormGroup;
 
   ngOnInit() {
     this.initForms();
@@ -32,6 +29,10 @@ export class LoginComponent implements OnInit {
       email: [null, [Validators.required, Validators.email]],
       age: [null, Validators.compose([Validators.required, Validators.min(16), Validators.max(100)])]
     })
+    this.formLogin = this.fb.group({
+      email: [null, [Validators.required, Validators.email]],
+      password: [null, [Validators.required, ]]
+    })
   }
 
   openDialogRegister() {
@@ -43,7 +44,10 @@ export class LoginComponent implements OnInit {
         data: this.createDataDialog()
       }
     })
-   
+  }
+
+  login(){
+    console.log(this.formLogin);
   }
 
   createDataDialog(

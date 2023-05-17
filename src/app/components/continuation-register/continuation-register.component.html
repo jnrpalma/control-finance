@@ -1,12 +1,15 @@
 <h1>Continue seu cadastro!</h1>
 <form [formGroup]="form" (ngSubmit)="submit()">
   <div>
+    <po-loading-overlay [hidden]="isHideLoading"></po-loading-overlay>
+  </div>
+  <div>
     <po-input name="input" formControlName="name" p-placeholder="Nome"  p-readonly="true">
     </po-input>
   </div>
 
   <div>
-    <po-input name="input" formControlName="email" p-placeholder="Email"  p-readonly="true">
+    <po-input name="email" formControlName="email" p-placeholder="Email"  p-readonly="true">
     </po-input>
   </div>
 
@@ -28,8 +31,9 @@
       class="form-control"
       aria-label="imgProfile"
       aria-describedby="imgProfile"
-      
+      accept="image/png, image/jpeg"
       (change)="onChange($event)"
+      required
     />
   </div>
 
@@ -40,6 +44,7 @@
       p-placeholder="Senha"
       p-error-pattern="Senha deve conter pelo menos 6 caracteres, uma letra maiúscula e um número"
       p-pattern="^(?=.*[A-Z])(?=.*\d).{6,}$"
+      p-required="true"
     >
     </po-password>
   </div>
@@ -51,6 +56,7 @@
       p-placeholder="Confirme sua senha"
       p-error-pattern="Senha deve conter pelo menos 6 caracteres, uma letra maiúscula e um número"
       p-pattern="^(?=.*[A-Z])(?=.*\d).{6,}$"
+      p-required="true"
     >
     </po-password>
     <br />
@@ -59,7 +65,8 @@
     </div>
   </div>
 
-  <div class="">
+  <div >
     <po-button class="d-grid gap-2"  (p-click)="submit()" p-label="FINALIZAR CADASTRO"> </po-button>
   </div>
 </form>
+
