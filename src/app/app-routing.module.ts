@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { GuardGuard } from './guards/guard.guard';
 
 const routes: Routes = [
   {
@@ -13,7 +14,8 @@ const routes: Routes = [
   },
   {
     path: 'dashboard',
-    loadChildren: () => import('./components/dashboard/dashboard-routing.module').then((m) => m.DashboardRoutingModule)
+    loadChildren: () => import('./components/dashboard/dashboard-routing.module').then((m) => m.DashboardRoutingModule),
+    canActivate: [GuardGuard]
   }
 ];
 
