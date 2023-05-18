@@ -7,6 +7,7 @@ import { ContinuationRegisterComponent } from '../continuation-register/continua
 import { ApiService } from 'src/app/services/api.service';
 import { LocalstorageService } from 'src/app/services/localstorage.service';
 import { PoNotificationService } from '@po-ui/ng-components';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -21,7 +22,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     private dialog: MatDialog, 
     private apiService: ApiService,
     private localStorage: LocalstorageService,
-    public poNotification: PoNotificationService) { }
+    public poNotification: PoNotificationService,
+    private router: Router) { }
 
 
   formRegister!: FormGroup;
@@ -69,8 +71,13 @@ export class LoginComponent implements OnInit, OnDestroy {
         this.localStorage.setLocalStorage('token', token)
         this.localStorage.setLocalStorage('user', email)
         this.poNotification.success('Login realizado com sucesso!');
+        this.navigateUrl('dashboard')
       })
     }
+  }
+
+  navigateUrl(url: string){
+    this.router.navigate([`/${url}`])
   }
 
   isValidForm(): boolean {
