@@ -7,4 +7,13 @@ import { Component } from '@angular/core';
 })
 export class MenuComponent {
 
+  messageHour!: string;
+
+  getMessageHour(message: string) {
+    this.messageHour = message;
+    console.log(' a mensagem chegou no filho', message);
+  }
+
+
+
 }
