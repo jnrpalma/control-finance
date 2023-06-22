@@ -1,6 +1,6 @@
 nav {
     background-color: #0d6efd;
-    height: 51px;
+    height: 72px;
   
     .float-left {
       float: left;
@@ -9,6 +9,10 @@ nav {
     .display-flex-end {
       display: flex;
       justify-content: flex-end;
+    }
+
+    .list-item {
+      margin-right: 50px; /* Ajuste o valor de acordo com o espaçamento desejado */
     }
   
     @media screen and (min-width: 375px) {
@@ -22,6 +26,10 @@ nav {
         flex-direction: row;
       }
     }
+
+    po-link {
+      --text-color: #ffffff;
+      }
   
     li {
       list-style: none;

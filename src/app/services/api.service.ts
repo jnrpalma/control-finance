@@ -1,10 +1,11 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, retry, throwError } from 'rxjs';
 import { environments } from 'src/environments/environments';
 import { RegisterUser } from '../interfaces/registerUser';
 import { PoNotificationService } from '@po-ui/ng-components';
 import { LoginUser } from '../interfaces/loginUser';
+import { DownloadImage } from '../interfaces/downloadimage';
 
 @Injectable({
   providedIn: 'root'
@@ -54,7 +55,7 @@ export class ApiService {
   }
 
   loginUser(user: any): Observable<LoginUser> {
-    return this.httpClient.post<LoginUser>(environments.BASE_URL + '/auth/login',  user)
+    return this.httpClient.post<LoginUser>(environments.BASE_URL + '/auth/login', user)
       .pipe(
         retry(2),
         catchError((err) => {
@@ -84,4 +85,38 @@ export class ApiService {
         )
       )
   }
+
+  downloadImage(imgName: string): Observable<DownloadImage> {
+    const headers = new HttpHeaders().set('imgName', imgName);
+  
+
+    return this.httpClient.get<DownloadImage>(environments.BASE_URL + '/download/image', { headers })
+      .pipe(
+        catchError((err) => {
+          if (err.status === 0 && err.status != 404) {
+            this.poNotification.error('O servidor não está respondendo. Por favor, verifique sua conexão de internet e tente novamente');
+            return throwError(() => err);
+          } else if (err.status === 400) {
+            this.poNotification.error('Solicitação inválida');
+            return throwError(() => err);
+          } else if (err.status === 401) {
+            this.poNotification.error('Não autorizado');
+            return throwError(() => err);
+          } else if (err.status === 403) {
+            this.poNotification.error('Acesso proibido');
+            return throwError(() => err);
+          } else if (err.status === 404) {
+            this.poNotification.error(err.error.message);
+            return throwError(() => err);
+          } else if (err.status === 500) {
+            this.poNotification.error('Erro interno do servidor');
+            return throwError(() => err);
+          } else {
+            this.poNotification.error('Ocorreu um erro no servidor');
+            return throwError(() => err);
+          }
+        }))
+  }
+
+
 }

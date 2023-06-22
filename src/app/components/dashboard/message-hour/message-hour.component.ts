@@ -17,18 +17,18 @@ export class MessageHourComponent implements OnInit{
     
     let hour = new Date().getHours();
     if(hour <= 5 ){
-      this.messageHour.emit('Boa Madrugada!')
+      this.messageHour.emit(' Boa Madrugada!')
       return;
     }
     if(hour < 12 ){
-      this.messageHour.emit('Bom dia!')
+      this.messageHour.emit(' Bom dia!')
       return;
     }
     if(hour < 18 ){
-      this.messageHour.emit('Boa tarde!')
+      this.messageHour.emit(' Boa tarde!')
       return;
     }
-    this.messageHour.emit('Boa noite!')
+    this.messageHour.emit(' Boa noite!')
   }
 
 }
