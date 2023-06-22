@@ -17,6 +17,7 @@ import { DebtsComponent } from './components/dashboard/debts/debts.component';
 import { RevenuesComponent } from './components/dashboard/revenues/revenues.component';
 import { BalanceTotalCardComponent } from './components/dashboard/balance-total-card/balance-total-card.component';
 import { DebtsCardComponent } from './components/dashboard/debts-card/debts-card.component';
+import { MessageHourComponent } from './components/dashboard/message-hour/message-hour.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { DebtsCardComponent } from './components/dashboard/debts-card/debts-card
     BalanceTotalCardComponent,
     RevenuesComponent,
     DebtsComponent,
-    FooterComponent
+    FooterComponent,
+    
 
   ],
   schemas: [
