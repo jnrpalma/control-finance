@@ -14,18 +14,34 @@
           <po-container>
             <po-tabs>
               <po-tab [p-active]="true" p-label="ENTRAR">
-                <form [formGroup]="formLogin"  
-                (ngSubmit)="login()">
+                <form [formGroup]="formLogin" (ngSubmit)="login()">
                   <div>
-                    <po-login name="input" p-placeholder="Email" formControlName="email"> </po-login>
+                    <po-login
+                      name="input"
+                      p-placeholder="Email"
+                      formControlName="email"
+                    >
+                    </po-login>
                   </div>
                   <div>
-                    <po-password name="password" formControlName="password"> </po-password>
+                    <po-password name="password" formControlName="password">
+                    </po-password>
                   </div>
                   <po-divider></po-divider>
+                  <!-- No seu template HTML -->
                   <div class="d-grid gap-2">
-                    <po-button class="d-grid gap-2" p-label="LOGAR"  (p-click)="login()"  [p-disabled]="formLogin.invalid" >
+                    <po-button
+                      class="d-grid gap-2"
+                      p-label="LOGAR"
+                      (p-click)="login()"
+                      [p-disabled]="formLogin.invalid"
+                    >
                     </po-button>
+                    <div>
+                      <po-loading-overlay
+                        [hidden]="!isLoading"
+                      ></po-loading-overlay>
+                    </div>
                   </div>
 
                   <p class="text-custom">

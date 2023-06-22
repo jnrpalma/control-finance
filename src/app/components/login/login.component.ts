@@ -29,6 +29,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   formRegister!: FormGroup;
   formLogin!: FormGroup;
   destroy$: Subject<boolean> = new Subject<boolean>();
+  isLoading = false;
 
   ngOnInit() {
     this.initForms();
@@ -61,18 +62,28 @@ export class LoginComponent implements OnInit, OnDestroy {
     })
   }
 
-  login(){
-    if(this.isValidForm()){
-      const {email} = this.createPayload();
+  login() {
+    if (this.isValidForm()) {
+      const { email } = this.createPayload();
+      this.isLoading = true; // Exibir o componente de loading
+  
       this.apiService.loginUser(this.createPayload())
-      .pipe(takeUntil(this.destroy$))
-      .subscribe((res: LoginUser)=> {
-        let {token} = res;
-        this.localStorage.setLocalStorage('token', JSON.stringify(token))
-        this.localStorage.setLocalStorage('user', JSON.stringify(email))
-        this.poNotification.success('Login realizado com sucesso!');
-        this.navigateUrl('dashboard')
-      })
+        .pipe(takeUntil(this.destroy$))
+        .subscribe(
+          (res: LoginUser) => {
+            let { token } = res;
+            this.localStorage.setLocalStorage('token', JSON.stringify(token))
+            this.localStorage.setLocalStorage('user', JSON.stringify(email))
+            this.poNotification.success('Login realizado com sucesso!');
+            this.navigateUrl('dashboard');
+            this.isLoading = false; // Esconder o componente de loading
+          },
+          (error) => {
+            // Tratamento de erro
+            console.error(error);
+            this.isLoading = false; // Esconder o componente de loading
+          }
+        );
     }
   }
 
